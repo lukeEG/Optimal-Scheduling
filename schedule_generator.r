@@ -217,3 +217,19 @@ mean(tmp.m)
 cat(paste("Best generated sequence according to wide spacing = ",w.int," and narrow =",n.int,"\nMean wide spacing: ",avg.w,"\nMean narrow spacing: ",avg.n))
 cat(paste(" ",length(single),"items in single,massed,narrow space, and wide space.","\n ","3 exposures in all but single"))
 
+print(best.sequence)
+best.num=rep(0,length(best.sequence))
+best.num[which(substr(best.sequence,1,1)=="M")] = 1
+best.num[which(substr(best.sequence,1,1)=="W")] = 2
+best.num[which(substr(best.sequence,1,1)=="N")] = 3
+best.num[which(substr(best.sequence,1,1)=="S")] = 4
+
+plot(best.num)
+
+tmp.x=c(1:length(best.sequence))
+tmp=rep(1,length(best.sequence))
+plot(tmp.x,tmp,pch=15,lwd=15,cex=2,ylim=c(.8,1.2),col="white")
+points(tmp.x[which(best.num==1)],tmp[which(best.num==1)]-.1,col="firebrick3",pch=15,lwd=15,cex=2)
+points(tmp.x[which(best.num==2)],tmp[which(best.num==2)]-.05,col="cornflowerblue",pch=15,lwd=15,cex=2)
+points(tmp.x[which(best.num==3)],tmp[which(best.num==3)]+.05,col="goldenrod2",pch=15,lwd=15,cex=2)
+points(tmp.x[which(best.num==4)],tmp[which(best.num==4)]+.1,col="forestgreen",pch=15,lwd=15,cex=2)
